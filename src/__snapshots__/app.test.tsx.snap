@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drinker Bars Flow: Coffee -> Beers -> Wines: Beers Bar 1`] = `
+Object {
+  "index": 1,
+  "subtype": "ale",
+  "title": "Beers",
+  "type": "beers",
+}
+`;
+
+exports[`Drinker Bars Flow: Coffee -> Beers -> Wines: Coffee Bar 1`] = `
+Object {
+  "index": 0,
+  "subtype": "hot",
+  "title": "Coffee",
+  "type": "coffee",
+}
+`;
+
+exports[`Drinker Bars Flow: Coffee -> Beers -> Wines: Wines Bar 1`] = `
+Object {
+  "index": 2,
+  "subtype": "reds",
+  "title": "Wines",
+  "type": "wines",
+}
+`;

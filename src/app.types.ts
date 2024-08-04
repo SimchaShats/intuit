@@ -1,4 +1,4 @@
-export type Coffee = {
+export type Drink = {
   title: string;
   description: string;
   ingredients: string[];

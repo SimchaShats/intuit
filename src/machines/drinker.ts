@@ -54,13 +54,7 @@ export function useDrinkerMachine(drinker: ReturnType<typeof DrinkerMachine>) {
 
   useEffect(() => {
     drinker.dispatch("coffee");
-    drinker.subscribe("coffee", (state) => {
-      setDrinkData(state);
-    });
-    drinker.subscribe("beers", (state) => {
-      setDrinkData(state);
-    });
-    drinker.subscribe("wines", (state) => {
+    drinker.subscribe("*", (state) => {
       setDrinkData(state);
     });
   }, []);

@@ -1,6 +1,3 @@
-import { subscribe, unsubscribe } from "diagnostics_channel";
-import internal from "stream";
-
 type Setup<State, T extends string> = {
   [K in T]: (state: State) => void | State;
 };
@@ -11,10 +8,13 @@ function Machine<State, T extends string>(
   initialState: State
 ) {
   let internalState: State = initialState;
-  const subscribers = {} as { [K in T]: ((state: State) => void)[] };
+  const subscribers = {} as { [K in T | "*"]: ((state: State) => void)[] };
   return {
     state: initialState,
-    subscribe: (step: SetupKeys<State, T>, action: (state: State) => void) => {
+    subscribe: (
+      step: SetupKeys<State, T> | "*",
+      action: (state: State) => void
+    ) => {
       if (!subscribers[step]) {
         subscribers[step] = [];
       }
@@ -38,6 +38,9 @@ function Machine<State, T extends string>(
         internalState = newState;
       }
       subscribers[step]?.forEach((subscriber) => subscriber(internalState));
+      subscribers["*" as unknown as typeof step]?.forEach((subscriber) =>
+        subscriber(internalState)
+      );
       return newState ?? internalState;
     },
   };
