@@ -17,6 +17,7 @@
 
 .app-wrapper {
   width: 50%;
+  overflow: hidden;
 }
 
 .app-area {
